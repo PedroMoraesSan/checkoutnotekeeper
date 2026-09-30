@@ -40,7 +40,7 @@ export function Modal({
   return createPortal(
     <AnimatePresence>
       {open ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8">
+        <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-8">
           <motion.button
             type="button"
             aria-label="Fechar"
@@ -55,13 +55,15 @@ export function Modal({
             role="dialog"
             aria-modal="true"
             aria-labelledby={labelledBy}
-            initial={{ opacity: 0, y: 12, scale: 0.96 }}
+            initial={{ opacity: 0, y: 24, scale: 1 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 8, scale: 0.98 }}
+            exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.28, ease }}
             className={cn(
-              "relative z-10 mx-auto flex max-h-[min(88dvh,720px)] w-full flex-col overflow-hidden rounded-[4px] border border-black/10 bg-card text-card-foreground shadow-[0_6px_16px_rgb(0_0_0/0.08),0_24px_48px_rgb(0_0_0/0.16)]",
-              size === "sm" ? "max-w-[400px]" : "max-w-[min(480px,calc(100vw-2rem))]",
+              "relative z-10 flex w-full max-h-[min(92dvh,720px)] flex-col overflow-hidden rounded-t-[12px] border border-black/10 bg-card text-card-foreground shadow-[0_6px_16px_rgb(0_0_0/0.08),0_24px_48px_rgb(0_0_0/0.16)] sm:mx-auto sm:rounded-[4px]",
+              size === "sm"
+                ? "sm:max-w-[400px]"
+                : "sm:max-w-[min(480px,calc(100vw-2rem))]",
             )}
           >
             {children}
@@ -85,7 +87,7 @@ export function ModalHeader({
   titleId?: string;
 }) {
   return (
-    <div className="flex items-start justify-between gap-4 border-b border-border px-6 py-4">
+    <div className="flex items-start justify-between gap-4 border-b border-border px-4 py-4 sm:px-6">
       <div className="min-w-0 pt-0.5">
         {eyebrow ? (
           <p className="text-mono-sm uppercase tracking-[0.08em] text-muted-foreground">
@@ -112,7 +114,7 @@ export function ModalBody({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={cn("overflow-y-auto px-6 py-5", className)} {...props} />;
+  return <div className={cn("overflow-y-auto px-4 py-5 sm:px-6", className)} {...props} />;
 }
 
 export function ModalFooter({
@@ -122,7 +124,7 @@ export function ModalFooter({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center justify-end gap-2 border-t border-border bg-muted/40 px-6 py-4",
+        "flex flex-col-reverse items-stretch gap-2 border-t border-border bg-muted/40 px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:px-6 sm:pb-4",
         className,
       )}
       {...props}

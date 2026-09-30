@@ -234,6 +234,20 @@ body {
   font-weight: 400;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  min-height: 100svh;
+}
+
+.mesa-shell {
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 @keyframes drunk-sway {
   0%,
   100% {

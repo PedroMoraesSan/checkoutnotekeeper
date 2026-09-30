@@ -13,7 +13,7 @@ const nav = [
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-sm">
-      <Container className="flex h-14 items-center justify-between gap-6">
+      <Container className="flex h-14 items-center justify-between gap-3 sm:gap-6">
         <Link href="/" className="shrink-0">
           <Logo />
         </Link>
@@ -29,7 +29,8 @@ export function Header() {
           ))}
         </nav>
         <Link href="/mesa" className={cn(buttonVariants({ size: "sm" }))}>
-          Abrir uma comanda
+          <span className="sm:hidden">Comanda</span>
+          <span className="hidden sm:inline">Abrir uma comanda</span>
         </Link>
       </Container>
     </header>

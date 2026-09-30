@@ -65,7 +65,7 @@ export default function Home() {
     <>
       <a
         href="/mesa"
-        className="flex items-center justify-center gap-3 bg-brand-deep px-4 py-2.5 text-center text-white"
+        className="flex flex-col items-center justify-center gap-1 bg-brand-deep px-4 py-2.5 text-center text-white sm:flex-row sm:gap-3"
       >
         <span className="text-body-sm">
           Toda boa ideia nasceu num guardanapo.
@@ -177,11 +177,11 @@ export default function Home() {
               title="Anota aí, que a conta a gente fecha depois"
               description="Senta na mesa, pega o guardanapo. A primeira ideia não espera o garçom."
             >
-              <div className="flex flex-wrap items-center gap-3">
-                <Link href="/mesa" className={cn(buttonVariants({ size: "lg" }))}>
+              <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
+                <Link href="/mesa" className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto")}>
                   Abrir uma comanda
                 </Link>
-                <Badge>Mesa 1</Badge>
+                <Badge className="self-start">Mesa 1</Badge>
               </div>
             </Section>
           </Container>

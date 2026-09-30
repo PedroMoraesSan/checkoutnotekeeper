@@ -54,10 +54,10 @@ export function NoteModal({
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button variant="secondary" onClick={() => setConfirmTrash(false)}>
+            <Button variant="secondary" className="w-full sm:w-auto" onClick={() => setConfirmTrash(false)}>
               Deixa na mesa
             </Button>
-            <Button variant="destructive" onClick={onTrash}>
+            <Button variant="destructive" className="w-full sm:w-auto" onClick={onTrash}>
               <Trash size={14} weight="light" />
               Jogar fora
             </Button>
@@ -77,29 +77,29 @@ export function NoteModal({
               value={text}
               onChange={(event) => onText(event.target.value)}
               placeholder="Escreve aí, sem pressa..."
-              className="min-h-36 font-hand text-lg leading-7"
+              className="min-h-28 font-hand text-lg leading-7 sm:min-h-36"
             />
           </ModalBody>
-          <ModalFooter className={isNew ? undefined : "justify-between"}>
+          <ModalFooter className={isNew ? undefined : "sm:justify-between"}>
             {!isNew ? (
               <Button
                 variant="ghost"
-                className="mr-auto text-destructive hover:bg-destructive/8"
+                className="w-full text-destructive hover:bg-destructive/8 sm:mr-auto sm:w-auto"
                 onClick={() => setConfirmTrash(true)}
               >
                 <Trash size={14} weight="light" />
                 Jogar fora
               </Button>
             ) : null}
-            <Button variant="secondary" onClick={onClose}>
+            <Button variant="secondary" className="w-full sm:w-auto" onClick={onClose}>
               {isNew ? "Deixa pra depois" : "Fechar"}
             </Button>
             {!isNew ? (
-              <Button variant="secondary" onClick={onPay}>
+              <Button variant="secondary" className="w-full sm:w-auto" onClick={onPay}>
                 Fechar a conta
               </Button>
             ) : null}
-            <Button onClick={onSave} disabled={!text.trim()}>
+            <Button className="w-full sm:w-auto" onClick={onSave} disabled={!text.trim()}>
               <Check size={14} weight="light" />
               Anotado ✓
             </Button>

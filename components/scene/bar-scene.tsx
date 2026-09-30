@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { ContactShadows, OrbitControls, Sky } from "@react-three/drei";
+import { TOUCH } from "three";
 import { BarProps } from "@/components/scene/bar-props";
 import { NapkinPad, NotesLayer } from "@/components/scene/napkins";
 import { Street } from "@/components/scene/street";
@@ -33,10 +34,10 @@ export function BarScene({
   return (
     <Canvas
       shadows
-      dpr={[1, 1.8]}
-      camera={{ position: [4.85, 3.85, 3.35], fov: 38, near: 0.1, far: 200 }}
+      dpr={[1, 1.5]}
+      camera={{ position: [5.1, 4.15, 3.85], fov: 42, near: 0.1, far: 200 }}
       gl={{ antialias: true }}
-      className="h-full w-full"
+      className="h-full w-full touch-none"
     >
       <color attach="background" args={["#9ec9e8"]} />
       <Sky
@@ -92,11 +93,17 @@ export function BarScene({
         enablePan={false}
         enableRotate
         enableZoom
-        minDistance={3.8}
+        enableDamping
+        dampingFactor={0.08}
+        minDistance={3.2}
         maxDistance={16}
         minPolarAngle={0.35}
         maxPolarAngle={1.35}
         target={[0.05, 0.12, 0.35]}
+        touches={{
+          ONE: TOUCH.ROTATE,
+          TWO: TOUCH.DOLLY_PAN,
+        }}
       />
     </Canvas>
   );

@@ -46,7 +46,7 @@ export function DrunkMeter({ level }: { level: number }) {
         : "Saúde. A ideia fica mais solta.";
 
   return (
-    <div className="pointer-events-none absolute top-24 right-4 z-30 max-w-[220px] border border-border bg-background/85 px-3 py-2 backdrop-blur-sm">
+    <div className="pointer-events-none absolute right-3 left-3 z-30 border border-border bg-background/85 px-3 py-2 backdrop-blur-sm bottom-[max(3.75rem,calc(env(safe-area-inset-bottom)+3.25rem))] sm:top-24 sm:right-4 sm:bottom-auto sm:left-auto sm:max-w-[220px]">
       <p className="flex items-center gap-2 text-mono-sm uppercase tracking-[0.08em] text-muted-foreground">
         <BeerStein size={12} weight="fill" className="text-[#c47a12]" />
         Teor {level}/5

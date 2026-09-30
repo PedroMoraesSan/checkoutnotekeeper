@@ -120,32 +120,36 @@ export function MesaExperience() {
       : `${open.length} ${open.length === 1 ? "item" : "itens"} na conta`;
 
   return (
-    <div className="relative h-dvh overflow-hidden bg-[#c5dcf0]">
-      <header className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between p-4 sm:p-5">
-        <div className="pointer-events-auto flex items-center gap-3">
+    <div className="mesa-shell relative h-dvh overflow-hidden bg-[#c5dcf0]">
+      <header className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-3 p-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:p-5">
+        <div className="pointer-events-auto flex min-w-0 items-center gap-2 sm:gap-3">
           <Link
             href="/"
-            className="inline-flex size-10 items-center justify-center border border-border bg-background/80 text-foreground backdrop-blur-sm"
+            className="inline-flex size-11 shrink-0 items-center justify-center border border-border bg-background/80 text-foreground backdrop-blur-sm sm:size-10"
             aria-label="Voltar"
           >
             <ArrowLeft size={16} weight="light" />
           </Link>
-          <div className="border border-border bg-background/80 px-3 py-2 backdrop-blur-sm">
+          <div className="min-w-0 border border-border bg-background/80 px-3 py-2 backdrop-blur-sm">
             <Logo />
-            <p className="mt-1 text-mono-sm uppercase tracking-wider text-muted-foreground">
+            <p className="mt-1 truncate text-mono-sm uppercase tracking-wider text-muted-foreground">
               Mesa 1
+              {ready ? ` · ${open.length}` : ""}
             </p>
           </div>
         </div>
-        <p className="pointer-events-none max-w-[220px] text-right text-mono-sm uppercase tracking-wider text-muted-foreground">
+        <p className="pointer-events-none hidden max-w-[220px] text-right text-mono-sm uppercase tracking-wider text-muted-foreground sm:block">
           {ready ? countLabel : "Sua conta"}
         </p>
       </header>
 
       <DrunkMeter level={drunk} />
 
-      <p className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 px-4 text-center text-mono-sm uppercase tracking-[0.08em] text-muted-foreground">
-        Copo pra beber · Guardanapo pra anotar · Lixo pra jogar fora
+      <p className="pointer-events-none absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-1/2 z-10 w-[min(100%-1.5rem,36rem)] -translate-x-1/2 px-2 text-center text-mono-sm uppercase tracking-[0.08em] text-muted-foreground">
+        <span className="sm:hidden">Toque no copo, no papel ou no lixo</span>
+        <span className="hidden sm:inline">
+          Copo pra beber · Guardanapo pra anotar · Lixo pra jogar fora
+        </span>
       </p>
 
       {ready ? (
@@ -180,7 +184,7 @@ export function MesaExperience() {
       ) : null}
 
       {toast ? (
-        <div className="absolute top-24 left-1/2 z-40 -translate-x-1/2 border border-border bg-popover px-4 py-2 text-body-sm shadow-elevated">
+        <div className="absolute top-[max(6.5rem,calc(env(safe-area-inset-top)+5.5rem))] left-3 right-3 z-40 border border-border bg-popover px-4 py-2 text-body-sm shadow-elevated sm:left-1/2 sm:right-auto sm:w-max sm:-translate-x-1/2">
           {toast}
         </div>
       ) : null}
