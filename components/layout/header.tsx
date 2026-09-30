@@ -5,15 +5,14 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
 
 const nav = [
-  { href: "#buttons", label: "Buttons" },
-  { href: "#inputs", label: "Inputs" },
-  { href: "#surfaces", label: "Surfaces" },
-  { href: "#feedback", label: "Feedback" },
+  { href: "#produto", label: "A mesa" },
+  { href: "#como-funciona", label: "Como funciona" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-sm">
       <Container className="flex h-14 items-center justify-between gap-6">
         <Link href="/" className="shrink-0">
           <Logo />
@@ -29,8 +28,8 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <Link href="#kit" className={cn(buttonVariants({ size: "sm" }))}>
-          Component kit
+        <Link href="/mesa" className={cn(buttonVariants({ size: "sm" }))}>
+          Abrir uma comanda
         </Link>
       </Container>
     </header>

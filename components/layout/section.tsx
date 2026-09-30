@@ -14,7 +14,7 @@ export function Section({
   description?: string;
 }) {
   return (
-    <section className={cn("py-16 sm:py-24", className)} {...props}>
+    <section className={cn("scroll-mt-28 py-16 sm:py-24", className)} {...props}>
       {(eyebrow || title || description) && (
         <header className="mb-10 flex max-w-[720px] flex-col gap-3">
           {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}

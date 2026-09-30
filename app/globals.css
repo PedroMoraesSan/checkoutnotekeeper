@@ -136,6 +136,7 @@
   --color-highlight-foreground: var(--highlight-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-jetbrains-mono);
+  --font-hand: var(--font-caveat), cursive;
   --radius-sm: 2px;
   --radius-md: var(--radius);
   --shadow-elevated: var(--shadow-elevated);
@@ -233,6 +234,84 @@ body {
   font-weight: 400;
 }
 
+@keyframes drunk-sway {
+  0%,
+  100% {
+    transform: rotate(calc(var(--drunk, 0) * -0.7deg))
+      scale(calc(1 + var(--drunk, 0) * 0.045))
+      translate3d(calc(var(--drunk, 0) * -10px), 0, 0);
+  }
+  40% {
+    transform: rotate(calc(var(--drunk, 0) * 0.85deg))
+      scale(calc(1 + var(--drunk, 0) * 0.055))
+      translate3d(calc(var(--drunk, 0) * 12px), calc(var(--drunk, 0) * -6px), 0);
+  }
+  70% {
+    transform: rotate(calc(var(--drunk, 0) * -0.35deg))
+      scale(calc(1 + var(--drunk, 0) * 0.04))
+      translate3d(calc(var(--drunk, 0) * 4px), calc(var(--drunk, 0) * 8px), 0);
+  }
+}
+
+.drunk-stage {
+  animation: drunk-sway 3.4s ease-in-out infinite;
+  filter: saturate(calc(1 + var(--drunk, 0) * 0.85))
+    contrast(calc(1 + var(--drunk, 0) * 0.18))
+    hue-rotate(calc(var(--drunk, 0) * 32deg))
+    blur(calc(var(--drunk, 0) * 1.8px));
+  transform-origin: 50% 45%;
+  will-change: transform, filter;
+}
+
+.drunk-chroma,
+.drunk-vignette,
+.drunk-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+.drunk-chroma {
+  mix-blend-mode: screen;
+  opacity: calc(var(--drunk, 0) * 0.45);
+}
+
+.drunk-chroma-r {
+  background: radial-gradient(
+    ellipse at 35% 40%,
+    rgb(255 40 40 / 0.35),
+    transparent 55%
+  );
+  transform: translate3d(calc(var(--drunk, 0) * -8px), 0, 0);
+}
+
+.drunk-chroma-c {
+  background: radial-gradient(
+    ellipse at 70% 55%,
+    rgb(40 180 255 / 0.32),
+    transparent 55%
+  );
+  transform: translate3d(calc(var(--drunk, 0) * 8px), calc(var(--drunk, 0) * 4px), 0);
+}
+
+.drunk-vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 42%,
+    rgb(40 18 8 / calc(var(--drunk, 0) * 0.55)) 100%
+  );
+}
+
+.drunk-glow {
+  background: linear-gradient(
+    180deg,
+    rgb(255 186 80 / calc(var(--drunk, 0) * 0.16)),
+    transparent 38%,
+    rgb(196 122 18 / calc(var(--drunk, 0) * 0.12)) 100%
+  );
+  mix-blend-mode: overlay;
+}
+
 * {
   border-color: var(--border);
 }
@@ -240,4 +319,25 @@ body {
 ::selection {
   background: var(--brand);
   color: var(--brand-on-brand);
+}
+
+@utility bg-grid-fine {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, black 30%, transparent 75%);
+}
+
+.surface-you .bg-grid-fine {
+  background-image:
+    linear-gradient(to right, rgb(15 15 15 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(15 15 15 / 0.06) 1px, transparent 1px);
+}
+
+@utility bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+  opacity: 0.22;
 }

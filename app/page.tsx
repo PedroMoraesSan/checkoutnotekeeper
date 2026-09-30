@@ -1,105 +1,108 @@
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  CheckCircle,
+  NotePencil,
+  Receipt,
+} from "@phosphor-icons/react/ssr";
+import Link from "next/link";
 import { Logo } from "@/components/brand/logo";
 import { Container } from "@/components/layout/container";
 import { Header } from "@/components/layout/header";
+import { Hero } from "@/components/layout/hero";
 import { Section } from "@/components/layout/section";
 import { Surface } from "@/components/layout/surface";
+import { FadeIn } from "@/components/motion/fade-in";
 import {
   Accordion,
-  Alert,
   Badge,
-  Button,
+  buttonVariants,
   Card,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
-  Checkbox,
-  CodeBlock,
-  Eyebrow,
-  Field,
-  Highlight,
-  Input,
-  Kbd,
-  Select,
   Separator,
-  Switch,
-  Tabs,
-  Textarea,
 } from "@/components/ui";
+import { cn } from "@/lib/cn";
+
+const features = [
+  {
+    icon: NotePencil,
+    title: "Rabiscou, guardou",
+    body: "A ideia surgiu no meio da conversa. Você anota no guardanapo antes que sumisse. Sem pasta, sem cerimônia.",
+  },
+  {
+    icon: Receipt,
+    title: "Pendura na conta",
+    body: "Cada nota é um item. A lista é a sua comanda. Anota agora, resolve depois.",
+  },
+  {
+    icon: CheckCircle,
+    title: "Fecha quando resolver",
+    body: "Quando a ideia virou fato, fecha a conta. Carimbo de pago. Saideira merecida.",
+  },
+];
+
+const steps = [
+  {
+    n: "01",
+    title: "A ideia aparece",
+    body: "No meio da mesa, no meio da conversa. Não espera o garçom voltar.",
+  },
+  {
+    n: "02",
+    title: "Rabisca no guardanapo",
+    body: "Abre uma comanda. Escreve aí, sem pressa. O papel fica na mesa.",
+  },
+  {
+    n: "03",
+    title: "Fecha a conta",
+    body: "Quando resolveu, estampa o pago. A mesa alivia. Volte sempre.",
+  },
+];
 
 export default function Home() {
   return (
     <>
       <a
-        href="#kit"
+        href="/mesa"
         className="flex items-center justify-center gap-3 bg-brand-deep px-4 py-2.5 text-center text-white"
       >
-        <span className="text-body-sm">Kit de componentes · superfície DEV</span>
+        <span className="text-body-sm">
+          Toda boa ideia nasceu num guardanapo.
+        </span>
         <span className="inline-flex items-center gap-1 font-mono text-[12px] uppercase tracking-[0.08em]">
-          Explorar
-          <ArrowUpRight className="size-3.5" strokeWidth={1.5} />
+          Abrir mesa
+          <ArrowUpRight size={14} weight="light" />
         </span>
       </a>
       <Header />
       <main>
-        <section className="relative overflow-hidden">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-[radial-gradient(ellipse_at_top,rgb(0_7_205_/_0.28),transparent_70%)]"
-          />
-          <Container className="relative flex flex-col items-center py-24 text-center sm:py-32">
-            <div className="mb-8 inline-flex items-center gap-3 border border-border px-3 py-1.5">
-              <span className="text-mono-sm uppercase tracking-wider text-muted-foreground">
-                Works with
-              </span>
-              <Separator orientation="vertical" className="h-4" />
-              <span className="text-mono-xs uppercase tracking-wider text-foreground">
-                Next.js · PWA · TypeScript
-              </span>
-            </div>
-            <h1 className="text-display max-w-4xl">
-              Notas de checkout,{" "}
-              <Highlight>com clareza</Highlight>
-            </h1>
-            <p className="mt-6 max-w-[720px] text-body-lg text-muted-foreground">
-              Base visual do Checkout Note Keeper. Neutros carregam a interface;
-              o azul marca o que importa. Ênfase vem do tamanho, nunca do peso.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Button size="lg">Get started for free</Button>
-              <Button size="lg" variant="secondary">
-                Get a demo
-              </Button>
-            </div>
-            <p className="mt-5 text-body-sm text-muted-foreground">
-              Superfície DEV por padrão. FOR YOU vira a seção, não o token.
-            </p>
-          </Container>
-        </section>
+        <Hero />
 
         <Separator />
 
         <Container>
           <Section
-            id="kit"
-            eyebrow="01 Foundation"
-            title="Dois mundos, um sistema"
-            description="DEV é o produto. FOR YOU é o avesso claro. Cada seção escolhe uma superfície e permanece nela."
+            id="produto"
+            eyebrow="A mesa"
+            title="Anotar é abrir uma conta no bar"
+            description="Sem pasta, sem complicação. Escreve, pendura e fecha a conta quando resolver."
           >
             <div className="grid gap-4 md:grid-cols-3">
-              {[
-                ["Achromatic", "Preto, branco e superfícies off-pure. Azul entra em cerca de 7% do que se vê."],
-                ["Geist + Mono", "Geist Sans 400/500. JetBrains Mono para chrome, badges e eyebrows."],
-                ["Hairline", "Bordas #2c2c2c no escuro. Sombra só quando o contraste da superfície não basta."],
-              ].map(([title, body]) => (
-                <Card key={title}>
-                  <CardHeader>
-                    <CardTitle>{title}</CardTitle>
-                    <CardDescription>{body}</CardDescription>
-                  </CardHeader>
-                </Card>
+              {features.map((feature, i) => (
+                <FadeIn key={feature.title} delay={i * 0.06}>
+                  <Card className="h-full">
+                    <CardHeader>
+                      <feature.icon
+                        size={28}
+                        weight="light"
+                        className="mb-3 text-foreground"
+                      />
+                      <CardTitle>{feature.title}</CardTitle>
+                      <CardDescription>{feature.body}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </FadeIn>
               ))}
             </div>
           </Section>
@@ -109,21 +112,26 @@ export default function Home() {
 
         <Container>
           <Section
-            id="buttons"
-            eyebrow="02 Actions"
-            title="Primary inverte. Secondary é hairline."
+            id="como-funciona"
+            eyebrow="Como funciona"
+            title="Três gestos. A mesa continua."
           >
-            <div className="flex flex-wrap items-center gap-3">
-              <Button>Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="destructive">Destructive</Button>
-              <Button size="sm">Small</Button>
-              <Button disabled>Disabled</Button>
-            </div>
-            <p className="mt-4 text-caption text-muted-foreground">
-              CTA primário é fill preto no claro, branco no escuro. Labels em mono, uppercase, tracking aberto.
-            </p>
+            <ol className="grid gap-px border border-border bg-border md:grid-cols-3">
+              {steps.map((step, i) => (
+                <li key={step.n} className="bg-background">
+                  <FadeIn
+                    delay={i * 0.06}
+                    className="flex h-full flex-col gap-3 p-6 sm:p-8"
+                  >
+                    <span className="text-mono-sm uppercase tracking-wider text-muted-foreground">
+                      {step.n}
+                    </span>
+                    <h3 className="text-h3">{step.title}</h3>
+                    <p className="text-body-sm text-muted-foreground">{step.body}</p>
+                  </FadeIn>
+                </li>
+              ))}
+            </ol>
           </Section>
         </Container>
 
@@ -131,186 +139,50 @@ export default function Home() {
 
         <Container>
           <Section
-            id="inputs"
-            eyebrow="03 Forms"
-            title="Campos quietos, foco em ink"
+            id="faq"
+            eyebrow="Perguntas"
+            title="O que a mesa pergunta primeiro"
           >
-            <div className="grid gap-8 lg:grid-cols-2">
-              <form className="flex max-w-[520px] flex-col gap-4">
-                <Field label="Título da nota" htmlFor="title" hint="O que aconteceu neste checkout.">
-                  <Input id="title" placeholder="Cliente pediu troca de endereço" />
-                </Field>
-                <Field label="Tipo" htmlFor="type">
-                  <Select id="type" defaultValue="checkout">
-                    <option value="checkout">Checkout</option>
-                    <option value="pagamento">Pagamento</option>
-                    <option value="envio">Envio</option>
-                  </Select>
-                </Field>
-                <Field label="Detalhe" htmlFor="detail">
-                  <Textarea id="detail" placeholder="Contexto, restrições, próximo passo…" />
-                </Field>
-                <label className="flex items-center gap-2.5 text-body-sm">
-                  <Checkbox defaultChecked />
-                  Pin no topo da fila
-                </label>
-                <label className="flex items-center gap-2.5 text-body-sm">
-                  <Switch defaultChecked />
-                  Sincronizar offline
-                </label>
-                <Button type="submit" className="w-fit">
-                  Salvar nota
-                </Button>
-              </form>
-              <CodeBlock filename="note.ts">{`const note = {
-  title: "Cliente pediu troca de endereço",
-  type: "checkout",
-  pinned: true,
-}`}</CodeBlock>
-            </div>
+            <FadeIn>
+              <Accordion
+                items={[
+                  {
+                    id: "sumir",
+                    title: "E se a ideia sumir?",
+                    content:
+                      "Por isso o guardanapo. Rabiscou, guardou. Fica no aparelho, na mesa, na conta.",
+                  },
+                  {
+                    id: "pasta",
+                    title: "Tem pasta, tag, projeto?",
+                    content:
+                      "Não. Tem mesa. Se precisar separar, são mesas — não um arquivo morto.",
+                  },
+                  {
+                    id: "fechar",
+                    title: "O que é fechar a conta?",
+                    content:
+                      "Arquivar o que já virou fato. A nota leva o carimbo de pago. A mesa alivia.",
+                  },
+                ]}
+              />
+            </FadeIn>
           </Section>
         </Container>
 
-        <Separator />
-
-        <Container>
-          <Section
-            id="surfaces"
-            eyebrow="04 Chrome"
-            title="Badges, tabs e o card elevado"
-          >
-            <div className="flex flex-wrap items-center gap-2">
-              <Badge>v0.1.0</Badge>
-              <Badge tone="brand">Spot</Badge>
-              <Badge tone="success">Synced</Badge>
-              <Badge tone="warning">Pending</Badge>
-              <Badge tone="destructive">Blocked</Badge>
-              <span className="text-body-sm text-muted-foreground">
-                Atalho <Kbd>⌘</Kbd> <Kbd>K</Kbd>
-              </span>
-            </div>
-            <div className="mt-10 grid gap-4 lg:grid-cols-2">
-              <Card elevated>
-                <CardHeader>
-                  <Eyebrow>Session</Eyebrow>
-                  <CardTitle>Card elevado</CardTitle>
-                  <CardDescription>
-                    Uma sombra em duas camadas. Use quando o contraste da superfície não chega.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Tabs
-                    tabs={[
-                      {
-                        id: "overview",
-                        label: "Overview",
-                        content: (
-                          <p className="text-body-sm text-muted-foreground">
-                            Tabs usam mono uppercase e um underline em brand-ink no item ativo.
-                          </p>
-                        ),
-                      },
-                      {
-                        id: "tokens",
-                        label: "Tokens",
-                        content: (
-                          <p className="text-body-sm text-muted-foreground">
-                            Background #0f0f0f · Card #1e1e1e · Border #2c2c2c · Brand #51a2ff.
-                          </p>
-                        ),
-                      },
-                    ]}
-                  />
-                </CardContent>
-                <CardFooter>
-                  <Button size="sm">Confirmar</Button>
-                  <Button size="sm" variant="secondary">
-                    Cancelar
-                  </Button>
-                </CardFooter>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>FAQ</CardTitle>
-                  <CardDescription>Accordion com um item aberto por vez.</CardDescription>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <Accordion
-                    items={[
-                      {
-                        id: "surface",
-                        title: "Por que DEV é o padrão?",
-                        content:
-                          "O produto é ferramenta. A superfície escura reduz ruído e deixa o azul de destaque legível a 7.27:1.",
-                      },
-                      {
-                        id: "blue",
-                        title: "Quando usar o azul?",
-                        content:
-                          "Só no eyebrow mark, no label de categoria e em estado interativo — foco, checked, linha selecionada.",
-                      },
-                      {
-                        id: "type",
-                        title: "Posso usar bold?",
-                        content:
-                          "Não no sans. Geist fica em 400 ou 500. H2 é o único heading medium. O resto sobe de tamanho.",
-                      },
-                    ]}
-                  />
-                </CardContent>
-              </Card>
-            </div>
-          </Section>
-        </Container>
-
-        <Separator />
-
-        <Container>
-          <Section
-            id="feedback"
-            eyebrow="05 Feedback"
-            title="Semântica só quando é semântica"
-          >
-            <div className="grid gap-3">
-              <Alert title="Sessão conectada">
-                A nota foi gravada localmente e entra na fila de sync.
-              </Alert>
-              <Alert tone="success" title="Sync ok">
-                12 notas enviadas para o servidor.
-              </Alert>
-              <Alert tone="warning" title="Fila atrasada">
-                Sem rede. Novas notas ficam no dispositivo.
-              </Alert>
-              <Alert tone="destructive" title="Falha ao publicar">
-                O endpoint recusou o payload. Revise o tipo da nota.
-              </Alert>
-            </div>
-          </Section>
-        </Container>
-
-        <Surface tone="you">
+        <Surface tone="you" id="comecar">
           <Container>
             <Section
-              eyebrow="06 For you"
-              title="A mesma marca, invertida"
-              description="Uma região inteira vira para o claro. Não misture um card escuro dentro de uma seção clara."
+              eyebrow="Saideira"
+              title="Anota aí, que a conta a gente fecha depois"
+              description="Senta na mesa, pega o guardanapo. A primeira ideia não espera o garçom."
             >
               <div className="flex flex-wrap items-center gap-3">
-                <Button>Primary</Button>
-                <Button variant="secondary">Secondary</Button>
-                <Badge tone="brand">#51a2ff</Badge>
+                <Link href="/mesa" className={cn(buttonVariants({ size: "lg" }))}>
+                  Abrir uma comanda
+                </Link>
+                <Badge>Mesa 1</Badge>
               </div>
-              <Card className="mt-8 max-w-[520px]" elevated>
-                <CardHeader>
-                  <CardTitle>Superfície FOR YOU</CardTitle>
-                  <CardDescription>
-                    Fundo #f6f6f6, card branco, CTA preto. O azul de marca não muda.
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter>
-                  <Button size="sm">Continuar</Button>
-                </CardFooter>
-              </Card>
             </Section>
           </Container>
         </Surface>
@@ -319,7 +191,7 @@ export default function Home() {
         <Container className="flex flex-wrap items-center justify-between gap-4">
           <Logo />
           <p className="text-mono-sm uppercase tracking-wider text-muted-foreground">
-            Inspired by Composio Dev · not affiliated
+            Suas ideias, na sua conta
           </p>
         </Container>
       </footer>
