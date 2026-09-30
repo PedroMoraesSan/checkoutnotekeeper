@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* FOR YOU — light consumer surface */
+:root {
+  --background: #f6f6f6;
+  --foreground: #0f0f0f;
+  --card: #ffffff;
+  --card-foreground: #0f0f0f;
+  --popover: #fafafa;
+  --popover-foreground: #0f0f0f;
+  --panel: #ffffff;
+  --border: #eaeaea;
+  --input: #eaeaea;
+  --ring: oklch(70.8% 0 0);
+  --brand: #51a2ff;
+  --brand-hover: #3590f5;
+  --brand-active: #1f7ee8;
+  --brand-ink: #0b6fd6;
+  --brand-on-brand: #0f0f0f;
+  --brand-deep: #0007cd;
+  --primary: #0f0f0f;
+  --primary-foreground: #ffffff;
+  --secondary: #ffffff;
+  --secondary-foreground: #0f0f0f;
+  --muted: #f5f5f5;
+  --muted-foreground: oklch(55.6% 0 0);
+  --accent: #f5f5f5;
+  --accent-foreground: #0f0f0f;
+  --destructive: oklch(57.7% 0.215 27.3);
+  --success: oklch(54.6% 0.16 155.8);
+  --warning: oklch(66.6% 0.16 75);
+  --highlight: #d4ff4a;
+  --highlight-foreground: #0f0f0f;
+  --radius: 0.625rem;
+  --shadow-elevated: 0 1px 1px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+}
+
+/* Nested FOR YOU region inside a DEV page */
+.surface-you {
+  --background: #f6f6f6;
+  --foreground: #0f0f0f;
+  --card: #ffffff;
+  --card-foreground: #0f0f0f;
+  --popover: #fafafa;
+  --popover-foreground: #0f0f0f;
+  --panel: #ffffff;
+  --border: #eaeaea;
+  --input: #eaeaea;
+  --ring: oklch(70.8% 0 0);
+  --brand: #51a2ff;
+  --brand-hover: #3590f5;
+  --brand-active: #1f7ee8;
+  --brand-ink: #0b6fd6;
+  --brand-on-brand: #0f0f0f;
+  --primary: #0f0f0f;
+  --primary-foreground: #ffffff;
+  --secondary: #ffffff;
+  --secondary-foreground: #0f0f0f;
+  --muted: #f5f5f5;
+  --muted-foreground: oklch(55.6% 0 0);
+  --accent: #f5f5f5;
+  --accent-foreground: #0f0f0f;
+  --destructive: oklch(57.7% 0.215 27.3);
+  --success: oklch(54.6% 0.16 155.8);
+  --warning: oklch(66.6% 0.16 75);
+  --highlight: #d4ff4a;
+  --highlight-foreground: #0f0f0f;
+  --shadow-elevated: 0 1px 1px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+}
+
+/* DEV — dark developer surface */
+.dark {
+  --background: #0f0f0f;
+  --foreground: #ffffff;
+  --card: #1e1e1e;
+  --card-foreground: #ffffff;
+  --popover: #2a2a2a;
+  --popover-foreground: #ffffff;
+  --panel: #151515;
+  --border: #2c2c2c;
+  --input: rgb(255 255 255 / 0.15);
+  --ring: oklch(55.6% 0 0);
+  --brand: #51a2ff;
+  --brand-hover: #51a2ff;
+  --brand-active: #51a2ff;
+  --brand-ink: #51a2ff;
+  --brand-on-brand: #0f0f0f;
+  --brand-deep: #0007cd;
+  --primary: #ffffff;
+  --primary-foreground: #0f0f0f;
+  --secondary: #1e1e1e;
+  --secondary-foreground: #ffffff;
+  --muted: #262626;
+  --muted-foreground: oklch(70.8% 0 0);
+  --accent: #262626;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(63.7% 0.208 25.3);
+  --success: oklch(64.8% 0.17 155.8);
+  --warning: oklch(75.8% 0.163 75);
+  --highlight: #c9f53a;
+  --highlight-foreground: #0f0f0f;
+  --shadow-elevated: 0 1px 1px rgb(0 0 0 / 0.4), 0 12px 32px rgb(0 0 0 / 0.45);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-panel: var(--panel);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-on-brand: var(--brand-on-brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-jetbrains-mono);
+  --radius-sm: 2px;
+  --radius-md: var(--radius);
+  --shadow-elevated: var(--shadow-elevated);
+  --container-page: 77.5rem;
+  --container-prose: 45rem;
+  --container-form: 32.5rem;
+  --container-cta: 23.75rem;
+}
+
+@utility text-display {
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+@utility text-h1 {
+  font-size: clamp(1.5rem, 3vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+@utility text-h2 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+@utility text-h3 {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+@utility text-body-lg {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+}
+
+@utility text-body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+}
+
+@utility text-body-sm {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+}
+
+@utility text-caption {
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+}
+
+@utility text-mono-md {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.625;
+}
+
+@utility text-mono-sm {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+
+@utility text-mono-xs {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.625rem;
+  line-height: 1.2;
+}
+
+@utility text-mono-2xs {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.5625rem;
+  line-height: 1.2;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: var(--brand);
+  color: var(--brand-on-brand);
+}
