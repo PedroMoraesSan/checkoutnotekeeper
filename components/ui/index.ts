@@ -16,3 +16,4 @@ export { CodeBlock } from "./code-block";
 export { Select } from "./select";
 export { Accordion } from "./accordion";
 export { Tabs } from "./tabs";
+export { Modal, ModalHeader, ModalBody, ModalFooter } from "./modal";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { CaretDown } from "@phosphor-icons/react/ssr";
 import { cn } from "@/lib/cn";
 
 type Item = {
@@ -33,12 +33,13 @@ export function Accordion({
               className="flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left text-h3 transition-colors hover:text-muted-foreground"
             >
               {item.title}
-              <ChevronDown
+              <CaretDown
+                size={16}
+                weight="light"
                 className={cn(
-                  "size-4 shrink-0 text-muted-foreground transition-transform",
+                  "shrink-0 text-muted-foreground transition-transform",
                   open && "rotate-180",
                 )}
-                strokeWidth={1.5}
               />
             </button>
             {open ? (

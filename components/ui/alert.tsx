@@ -1,5 +1,10 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { AlertCircle, CheckCircle2, Info, TriangleAlert } from "lucide-react";
+import {
+  CheckCircle,
+  Info,
+  Warning,
+  WarningCircle,
+} from "@phosphor-icons/react/ssr";
 import { cn } from "@/lib/cn";
 
 const alertVariants = cva("flex gap-3 border p-4 text-body-sm", {
@@ -16,9 +21,9 @@ const alertVariants = cva("flex gap-3 border p-4 text-body-sm", {
 
 const icons = {
   info: Info,
-  success: CheckCircle2,
-  warning: TriangleAlert,
-  destructive: AlertCircle,
+  success: CheckCircle,
+  warning: Warning,
+  destructive: WarningCircle,
 };
 
 const iconClass = {
@@ -41,8 +46,9 @@ export function Alert({
   return (
     <div role="status" className={cn(alertVariants({ tone }), className)} {...props}>
       <Icon
-        className={`mt-0.5 size-4 shrink-0 ${iconClass[tone ?? "info"]}`}
-        strokeWidth={1.5}
+        size={16}
+        weight="light"
+        className={`mt-0.5 shrink-0 ${iconClass[tone ?? "info"]}`}
       />
       <div className="flex flex-col gap-1">
         {title ? <p className="text-h3">{title}</p> : null}
